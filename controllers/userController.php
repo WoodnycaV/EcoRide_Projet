@@ -24,7 +24,7 @@ class UserController {
                 $_SESSION['user_id'] = $user['id_user'];
                 $_SESSION['pseudo'] = $user['pseudo_utilisateur'];
                 $_SESSION['role'] = $user['role'];
-                echo "connecter"; 
+                
                 header('Location: index.php?controller=user&action=profil');
                 exit;
             } else {
@@ -63,7 +63,7 @@ class UserController {
             else {
                 
                 $model_user->incription($pseudo, $email, $pwd);
-                header('location : index.php?controller=user&action=profil');
+                header('location: index.php?controller=user&action=login');
                 exit;
             }
 
