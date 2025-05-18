@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-3">
     <div class="row text-center footer">
         <div class="col-6 col-lg-4">
             <a href="#">MENTIONS LEGALES</a>
@@ -13,5 +13,4 @@
         </div>
     </div>
 </footer>
-</body>
-</html>
+

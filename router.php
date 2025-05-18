@@ -1,7 +1,7 @@
 <?php
 class Router {
     public function route() {
-        
+        // trouver un solution pour gerer l'affichage de title du doc html
 
         //Reccupere le controleur et l'action depuis l'URL
         $controller = $_GET['controller'] ?? 'acceuil';

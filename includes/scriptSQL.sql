@@ -6,7 +6,7 @@ create table utilisateurs (
     pseudo_utilisateur varchar(10) unique not null,
     email_utilisateur varchar(255) unique not null,
     mot_de_passe varchar(255) not null,
-    role varchar(15),
+    role varchar(15) not null,
     credit int,
     photo varchar(255)
 );
