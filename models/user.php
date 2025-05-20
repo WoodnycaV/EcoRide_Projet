@@ -43,5 +43,36 @@ class User extends Model {
         return $request->fetchColumn() > 0;
 
     }
+
+    public function getNoteUser($id_user) {
+        $request = $this->pdo->prepare("
+            select round(sum(note)/(select count(*) from avis where id_conducteur = ?), 1)  
+            from avis
+        ");
+        $request->execute([$id_user]);
+        return $request->fetch();
+
+    }
+
+    public function getUserInfo($id_user) {
+        $request = $this->pdo->prepare("
+            select pseudo_utilisateur, email_utilisateur, role, credit, photo  from utilisateurs 
+            where id_utilisateur = ?
+        ");
+        $request->execute([$id_user]);
+        return $request->fetch();
+    }
+    
+
+
+    public function getVehiculesUser($id_user) {
+        $request = $this->pdo->prepare("
+            select * from vehicules
+            where id_utilisateur = ?
+        ");
+
+        $request->execute([$id_user]);
+        return $request->fetchAll();
+    }
 }
 ?>

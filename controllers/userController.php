@@ -4,9 +4,10 @@ require_once("models/user.php");
 
 class UserController {
     public $error = null;
+    public $model_user;
 
     public function __construct() {
-       
+       $this->model_user = new User();
     }
 
     public function login() {
@@ -16,12 +17,11 @@ class UserController {
             $identifiant = $_POST['id'];
             $pwd = $_POST['password'];
 
-            $model_user = new User();
-            $user = $model_user->connexion($identifiant, $pwd);
-
+            $user = $this->model_user->connexion($identifiant, $pwd);
+            
             if($user) {
-                session_start();
-                $_SESSION['user_id'] = $user['id_user'];
+                
+                $_SESSION['user_id'] = $user['id_utilisateur'];
                 $_SESSION['pseudo'] = $user['pseudo_utilisateur'];
                 $_SESSION['role'] = $user['role'];
                 
@@ -50,11 +50,9 @@ class UserController {
             $email = $_POST['email'];
             $pwd = $_POST['password'];
             $pwd_confirm = $_POST['password_confirm'];
-
-            $model_user = new User();
             
 
-            if($model_user->userExist($pseudo, $email)) {
+            if($this->model_user->userExist($pseudo, $email)) {
                 $error = "Un compte existe déja avec cette email ou ce pseudo";
             }
             elseif($pwd !== $pwd_confirm) {
@@ -62,7 +60,7 @@ class UserController {
             } 
             else {
                 
-                $model_user->incription($pseudo, $email, $pwd);
+                $this->model_user->incription($pseudo, $email, $pwd);
                 header('location: index.php?controller=user&action=login');
                 exit;
             }
@@ -74,6 +72,21 @@ class UserController {
     }
 
     public function profil() {
-        include("views/user/profil.php");
+        
+        if(isset($_SESSION['user_id'])) {
+
+            //gerer l'affichage en fonction du role admin/passager/conducteur/employee
+            $user_id = $_SESSION['user_id'];
+
+            $user = $this->model_user->getUserInfo($user_id);
+            $vehicules = $this->model_user->getVehiculesUser($user_id);
+            $note_user = $this->model_user->getNoteUser($user_id);
+
+            include("views/user/profil.php");
+        } else {
+            include ("views/user/login.php");
+            //echo $_SESSION['user_id'];
+        }
+        
     }
 }

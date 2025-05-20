@@ -6,7 +6,7 @@
 <form method="POST" action="index.php?controller=user&action=login">
     <div class="mt-3 p-3 col-md-6 offset-md-3">
 
-        <h2 class="text-center">Connexion</h2>
+        <h1 class="text-center">Connexion</h1>
 
         <div class="mb-3">
             <label for="Identifiant" class="form-label">Identifiant</label>

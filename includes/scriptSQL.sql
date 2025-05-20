@@ -7,7 +7,7 @@ create table utilisateurs (
     email_utilisateur varchar(255) unique not null,
     mot_de_passe varchar(255) not null,
     role varchar(15) not null,
-    credit int,
+    credit int null default '0',
     photo varchar(255)
 );
 
@@ -32,7 +32,7 @@ create table avis (
     note int not null,
     commentaire varchar(250),
     statue varchar(10) not null,
-    date_avis datetime,
+    date_avis datetime not null,
     id_conducteur bigint unsigned not null,
     id_passager bigint unsigned not null,
     foreign key (id_conducteur) references utilisateurs(id_utilisateur),
@@ -65,6 +65,7 @@ create table trajets (
     nb_place int not null,
     voiture varchar(10) not null,
     id_conducteur bigint unsigned not null,
+    prix int not null,
     foreign key (voiture) references vehicules(plaque_immatriculation),
     foreign key (id_conducteur) references utilisateurs(id_utilisateur)
 );

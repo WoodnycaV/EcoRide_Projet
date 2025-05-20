@@ -11,8 +11,8 @@
 <form method="POST" action="index.php?controller=user&action=register">
     <div class="mt-3 p-3 col-md-6 offset-md-3">
 
-        <h2 class="text-center pb-3">Inscription</h2>
-        <h3>Réservez votre prochain trajet et profitez de 20 crédit offert</h3>
+        <h1 class="text-center pb-3">Inscription</h1>
+        <h2>Réservez votre prochain trajet et profitez de 20 crédit offert</h2>
 
         <div class="mb-3">
             <label for="input_pseudo" class="form-label">Pseudo</label>
