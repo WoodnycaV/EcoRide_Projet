@@ -17,7 +17,13 @@
               <a class="nav-link active" href="pages/Contact.php">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="index.php?controller=user&action=login">Connexion</a>
+                <?php 
+                  if(isset($_SESSION['user_id'])) {
+                    echo '<a class="nav-link active" href="index.php?controller=user&action=logout">Deconnexion</a>';
+                  } else {
+                    echo '<a class="nav-link active" href="index.php?controller=user&action=login">Connexion</a>';
+                  }
+                ?>
             </li>
           </ul>
         </div>
