@@ -12,8 +12,8 @@ class TrajetController {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $lieu_dep = $_POST['lieu_dep'];
-            $lieu_arr = $_POST['lieu_arr'];
+            $lieu_dep = ucfirst(strtolower($_POST['lieu_dep']));
+            $lieu_arr = ucfirst(strtolower($_POST['lieu_arr']));
             $heure_dep = $_POST['heure_dep'];
             $heure_arr = $_POST['heure_arr'];
             $date = $_POST['date'];

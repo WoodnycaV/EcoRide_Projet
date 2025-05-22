@@ -36,6 +36,8 @@ class UserController {
            
         } else {
 
+            $page_title = "Connexion";
+           // $page_css = "login";
             include ("views/user/login.php");
 
         }
@@ -66,9 +68,17 @@ class UserController {
             }
 
         } else {
+            $page_title = "Inscription";
+           // $page_css = "register";
             include ("views/user/register.php");
+
         }
         
+    }
+
+    public function logout() {
+        unset($_SESSION['user_id']);
+        include ("views/acceuil/index.php");
     }
 
     public function profil() {
@@ -79,13 +89,26 @@ class UserController {
             $user_id = $_SESSION['user_id'];
 
             $user = $this->model_user->getUserInfo($user_id);
+            //definit si l'user des voitures
             $vehicules = $this->model_user->getVehiculesUser($user_id);
-            $note_user = $this->model_user->getNoteUser($user_id);
+            if(count($vehicules) > 0 && $vehicules != null) {
+                $_SESSION['voiture_exist'] = true;
+            } else {
+                $_SESSION['voiture_exist'] = false;
+            }
+            
 
-            include("views/user/profil.php");
+            $note_user = $this->model_user->getNoteUser($user_id);
+            $preferences_user = $this->model_user->getPreference($user_id);
+            $reservation_user = $this->model_user->getReservation($user_id);
+            $trajet_user = $this->model_user->getTrajet($user_id);
+
+            $page_title = "Profil";
+            $page_css = "profil";
+            include ("views/user/profil.php");
+            
         } else {
             include ("views/user/login.php");
-            //echo $_SESSION['user_id'];
         }
         
     }
