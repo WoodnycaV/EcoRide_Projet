@@ -72,7 +72,37 @@ class User extends Model {
         ");
 
         $request->execute([$id_user]);
-        return $request->fetchAll();
+        return $request->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getPreference($id_user) {
+        $request = $this->pdo->prepare("
+            select nom from preferences 
+            where id_preference = (select id_preference from preferences_utilisateur where id_utilisateur = ?)
+        ");
+        $request->execute([$id_user]);
+        return $request->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getReservation($id_user) {
+        
+        $request = $this->pdo->prepare("
+            select * from reservations
+            where id_passager = ?
+        ");
+        $request->execute([$id_user]);
+
+        return $request->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+    public function getTrajet($id_user) {
+        $request = $this->pdo->prepare("
+            select * from trajets 
+            where id_conducteur = ?
+        ");
+        $request->execute([$id_user]);
+        return $request->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 ?>

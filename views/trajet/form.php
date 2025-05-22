@@ -7,6 +7,7 @@
 
 <?php } ?>
 
+<?php require_once("views/components/header.php"); ?>
 
 <form method="POST" action="index.php?controller=trajet&action=creation">
     <div class="mt-3 p-3 col-md-6 offset-md-3">
@@ -26,12 +27,12 @@
 
         <div class="mb-3">
             <label for="input_heure_dep" class="form-label">Heure de départ</label>
-            <input type="time" id="input_heure_dep" class="form-control" name="heure_dep" min="09:00" max="18:00" aria-describedby="heure_depHelp" required />
+            <input type="time" id="input_heure_dep" class="form-control" name="heure_dep" aria-describedby="heure_depHelp" required />
         </div>
 
         <div class="mb-3">
             <label for="input_heure_arr" class="form-label">Heure d'arrivée</label>
-            <input type="time" id="input_heure_arr" class="form-control" name="heure_arr" min="09:00" max="18:00" aria-describedby="Heure_arrHelp" required />
+            <input type="time" id="input_heure_arr" class="form-control" name="heure_arr" aria-describedby="Heure_arrHelp" required />
         </div>
 
         <div class="mb-3">
