@@ -29,7 +29,7 @@
 
         <div >
             <h2>Vos véhicules</h2>
-            <button id="btn_voiture"> <a href="index.php?controller=voiture&action=enregistrer">ajouter voitures</a> </button>
+            <button class="btn_add"> <a href="index.php?controller=voiture&action=enregistrer">Ajouter voitures</a> </button>
             <?php
             if($vehicules) {
                 foreach($vehicules as $voiture) {
@@ -48,7 +48,7 @@
                 }
                 }
             ?>
-            <button>Ajouter</button>
+            <button class="btn_add"><a href="index.php?controller=preference&action=ajouter">Ajouter</a></button>
         </div>
     </div>
 

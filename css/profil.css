@@ -6,7 +6,7 @@
     display: none;
 }
 
-#btn_voiture a{
+.btn_add a{
      
     text-decoration: none;
     color: black;

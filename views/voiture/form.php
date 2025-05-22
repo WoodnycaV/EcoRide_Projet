@@ -47,11 +47,5 @@
 
         <button type="submit" class="btn btn-primary">Enregistrer votre voiture</button>
     </div>
-  
-</form >
-
-<form method="POST" action="index.php?controller=preference&action=ajouter">
-
-</form>
 
 <?php require_once("views/components/footer.php"); ?>
