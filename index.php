@@ -5,20 +5,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-  <title>EcoRide - Roulez plus écologique</title>
+  <title>EcoRide - 
+    <?php // regarder pk l'affichage du title ne fonctionne pas
+    
+      if(isset($page_title)) {
+        echo $page_title;
+      } else {
+        echo "Roulez plus écologique";
+      }
+    ?> 
+  </title>
+      
+  <?php 
+    if(isset($page_css)) {
+      echo '<link rel="stylesheet" href="css/' . $page_css . '.css">';
+    } else {
+
+    }
+  ?>
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+   
+   <?php
 
-<?php
+    session_start();
 
-  session_start();
-
-  require_once("router.php");
-  $route = new Router();
-  $route->route();
-
-?>
-
+    require_once("router.php");
+    $route = new Router();
+    $route->route();
+    
+  ?>
 </body>
 </html>
+
+
